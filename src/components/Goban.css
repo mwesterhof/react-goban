@@ -1,8 +1,9 @@
 .Board {
     position: absolute;
     left: 50%;
+    top: 50%;
     background-color: #eeb;
-    transform: translate(-50%, 0%);
+    transform: translate(-50%, -50%);
     filter: drop-shadow(5px 5px 5px #999966);
     cursor: pointer;
 }

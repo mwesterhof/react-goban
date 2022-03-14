@@ -53,7 +53,7 @@ const Goban = (props) => {
 
     return (
         <div className='Goban'>
-            <h2>goban</h2>
+            <h1>{(blackTurn ? 'Black': 'White')}'s move</h1>
             <div className='Board'>
                 <table border="1">
                     <tbody>
