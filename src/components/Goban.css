@@ -1,0 +1,38 @@
+.Board {
+    position: absolute;
+    left: 50%;
+    background-color: #eeb;
+    transform: translate(-50%, 0%);
+    filter: drop-shadow(5px 5px 5px #999966);
+    cursor: pointer;
+}
+
+table {
+    border-collapse: collapse;
+    border: 1px solid #888844;
+}
+
+.Cell {
+    padding: 3px;
+    width: 18px;
+    height: 18px;
+}
+
+.Stone {
+    position: relative;
+    bottom: 1px;
+    width: 20px;
+    height: 20px;
+    background-color: #000000;
+    border-radius: 10px;
+    filter: drop-shadow(2px 2px 1px #888888);
+    cursor: not-allowed;
+}
+
+.byWhite {
+    background-color: #ffffff;
+}
+
+.byBlack {
+    background-color: #000000;
+}
