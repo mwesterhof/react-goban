@@ -1,5 +1,6 @@
 import './Goban.css';
 import { useState } from 'react';
+import processCaptures from './Algo';
 
 
 const Stone = (props) => {
@@ -16,7 +17,7 @@ const Stone = (props) => {
 const Cell = (props) => {
     return (
         <div className='Cell' onClick={props.onClick}>
-            {(props.value == true || props.value == false) && <Stone playerBlack={props.value} />}
+            {(props.value === true || props.value === false) && <Stone playerBlack={props.value} />}
         </div>
     );
 }
@@ -36,16 +37,17 @@ const Goban = (props) => {
     const [board, setBoard] = useState(boardRaw);
     const [blackTurn, setBlackTurn] = useState(true);
 
+    const placeMove = (row, col) => {
+        boardRaw = board;
+        boardRaw[row][col] = blackTurn;
+        processCaptures(boardRaw, !blackTurn, props.size);
+        setBoard(boardRaw);
+    };
+
     const getCellClickHandler = (clickedRow, clickedCol) => {
         const cellClickHandler = () => {
             console.log(`clicked cell ${clickedRow}/${clickedCol}`);
-            setBoard(oldBoard => {
-                return oldBoard.map((line, row) => {
-                    return line.map((cell, col) => {
-                        return ((row == clickedRow && col == clickedCol) ? blackTurn: cell);
-                    });
-                });
-            });
+            placeMove(clickedRow, clickedCol);
             setBlackTurn(old => !old);
         };
         return cellClickHandler
